@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #222 !important;
+  color: #eee !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  color: #5585ff;
+}
+
+a:hover {
+  color: #4b75df;
+}
+
+a:visited {
+  color: #9055ff;
+}
+
+
+.sidebar-link {
+  color: #eee !important;
+}
+
+.sidebar-link:hover {
+  color: #bbb !important;
+}
+
+.input-field {
+  padding: 16px;
+  margin: 4px;
+  border-radius: 4px;
+  border: 3px solid gray;
+}
+
+/* 
+
+Check out my hamburger animations!
+
+https://codepen.io/guzzler829/pen/BarzmOP
+
+*/
+
+.hamburger {
+  width: 48px;
+  height: 48px;
+  margin: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.hamburger-bg {
+  width: 48px;
+  height: 48px;
+  background-color: #383838;
+  position: absolute;
+  right: 0;
+  margin: 16px;
+  border-radius: 50%;
+  z-index: 98;
+}
+
+.double-v {
+  position: absolute;
+  right: 0;
+}
+
+.line {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.double-line-container {
+  display: flex;
+  position: relative;
+}
+
+.double-v .line {
+  transition: 500ms linear;
+}
+
+.dline-l {
+  width: 50%;
+  height: 5px;
+  background-color: #eee;
+  border-radius: 3px 0 0 3px;
+  transition: 500ms ease-in-out;
+}
+
+.dline-r {
+  width: 50%;
+  height: 5px;
+  background-color: #eee;
+  border-radius: 0 3px 3px 0;
+  transition: 500ms ease-in-out;
+}
+
+.double-v.is-active .dline-l {
+  transform-origin: right center;
+}
+
+.double-v.is-active .dline-r {
+  transform-origin: left center;
+}
+
+.double-v.is-active div:first-of-type .dline-l {
+  transform: translate(1px, 15px) rotate(45deg);
+}
+
+.double-v.is-active div:first-of-type .dline-r {
+  transform: translate(-1px, 15px) rotate(-45deg);
+}
+
+.double-v.is-active div:last-of-type .dline-l {
+  transform: translate(1px, -15px) rotate(-45deg);
+}
+
+.double-v.is-active div:last-of-type .dline-r {
+  transform: translate(-1px, -15px) rotate(45deg);
+}
+
+.double-v.is-active .line {
+  opacity: 0;
+}
+
+.sidebar {
+  width: 80px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background-color: #383838;
+  border-left: 2px solid gray;
+  margin-left: 10px;
+  transition: 300ms cubic-bezier(.39,.02,.78,.68);
+}
+
+.sidebar.is-active {
+  width: 250px;
+}
+
+.sidebar .link-table {
+  display: none;
+  transition: 300ms cubic-bezier(.39,.02,.78,.68);
+}
+
+.sidebar.is-active .link-table {
+  display: block;
+}
