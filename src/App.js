@@ -1,30 +1,37 @@
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom'
+import { lazy, Suspense } from 'react';
+
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-import InputField from './components/input-field';
-import Sidebar from './components/sidebar';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRootMatch
-} from 'react-router-dom'
+const Home = lazy(() => import('./components/home'));
+const InputField = lazy(() => import('./components/input-field'));
+const Sidebar = lazy(() => import('./components/sidebar'));
+const FourZeroFour = lazy(() => import('./components/404'));
 
 export default function App() {
   return (
-    <Router>
-      <div className="App">
-      <Sidebar />
-      <Switch>
-        <Route path="/post">
-          <InputField />
-        </Route>
-      </Switch>
-        
+    <Suspense fallback={(
+      <div>
+        <div className='spinner'></div>
+        <div className='spinner-2'></div>
       </div>
-    </Router>
+    )}>
+      <Sidebar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" component={<Home />}>
+            <Route path="/post" component={<InputField />}></Route>
+            <Route path="*" component={<FourZeroFour />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
+    
     
   );
 }
@@ -33,10 +40,9 @@ export default function App() {
 /*
 
 TODO:
--Get navbar from week-13 or use Bootstrap navbar
--Make input form component, display component when user clicks create-content button
--Chatroom???????
--
+-Make post component
+-Make comment component
+-Interface with API
 
 
 
