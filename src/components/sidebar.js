@@ -3,8 +3,7 @@ import Table from 'react-bootstrap/Table'
 
 import {
     BrowserRouter,
-    NavLink,
-    Outlet
+    Link
 } from 'react-router-dom'
 
 export default function Sidebar() {
@@ -17,59 +16,56 @@ export default function Sidebar() {
     };
 
     return (
-        <BrowserRouter>
-            <div className={`sidebar ${state}`}>
-                <div className='hamburger-bg'></div>
-                <div onClick={handleToggle} className={`hamburger double-v ${state}`}>
-                    <div className="double-line-container">
-                        <div className="dline-l"></div><div className="dline-r"></div>
-                    </div>
-                    <div className="line"></div>
-                    <div className="double-line-container">
-                        <div className="dline-l"></div><div className="dline-r"></div>
-                    </div>
+        <div className={`sidebar ${state}`}>
+            <div className='hamburger-bg'></div>
+            <div onClick={handleToggle} className={`hamburger double-v ${state}`}>
+                <div className="double-line-container">
+                    <div className="dline-l"></div><div className="dline-r"></div>
                 </div>
-                <div className='link-table'>
-                <Table striped bordered hover variant="dark">
-                    <thead>
-                        <tr>
-                            <th>
-                                <NavLink to="/user" className='sidebar-link'>Username</NavLink> 
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <NavLink to="/user" className='sidebar-link'>Profile</NavLink>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <NavLink to="/" className='sidebar-link'>Home</NavLink>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <NavLink to="/post" className='sidebar-link'>Create Post</NavLink>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <NavLink to="/saved" className='sidebar-link'>Saved Posts</NavLink>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <NavLink to="/settings" className='sidebar-link'>Settings</NavLink>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
-                <Outlet />
+                <div className="line"></div>
+                <div className="double-line-container">
+                    <div className="dline-l"></div><div className="dline-r"></div>
                 </div>
             </div>
-        </BrowserRouter>
+            <div className='link-table'>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>
+                            <Link to="/user" className='sidebar-link'>Username</Link> 
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <Link to="/user" className='sidebar-link'>Profile</Link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Link to="/" className='sidebar-link'>Home</Link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Link to="/post" className='sidebar-link'>Create Post</Link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Link to="/saved" className='sidebar-link'>Saved Posts</Link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Link to="/settings" className='sidebar-link'>Settings</Link>
+                        </td>
+                    </tr>
+                </tbody>
+            </Table>
+            </div>
+        </div>
     ); 
     
 }

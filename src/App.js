@@ -1,17 +1,18 @@
 import {
-  BrowserRouter,
-  Routes,
+  BrowserRouter as Router,
   Route,
+  Switch,
+  useRouteMatch
 } from 'react-router-dom'
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-const Home = lazy(() => import('./components/home'));
-const InputField = lazy(() => import('./components/input-field'));
-const Sidebar = lazy(() => import('./components/sidebar'));
-const FourZeroFour = lazy(() => import('./components/404'));
+import Home from './components/home';
+import InputField from './components/input-field';
+import Sidebar from './components/sidebar';
+import NotFound from './components/404';
 
 export default function App() {
   return (
@@ -21,18 +22,21 @@ export default function App() {
         <div className='spinner-2'></div>
       </div>
     )}>
-      <Sidebar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" component={<Home />}>
-            <Route path="/post" component={<InputField />}></Route>
-            <Route path="*" component={<FourZeroFour />}></Route>
+      <Router>
+        <Sidebar />
+        <Switch>
+          <Route path="/post">
+            <InputField />
           </Route>
-        </Routes>
-      </BrowserRouter>
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
     </Suspense>
-    
-    
   );
 }
 
