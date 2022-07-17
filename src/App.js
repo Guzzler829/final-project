@@ -25,10 +25,10 @@ export default function App() {
       <Router>
         <Sidebar />
         <Switch>
-          <Route path="/post">
+          <Route path="/post" exact={true}>
             <InputField />
           </Route>
-          <Route path="/">
+          <Route path="/" exact={true}>
             <Home />
           </Route>
           <Route>
