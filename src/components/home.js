@@ -31,7 +31,17 @@ export default class Home extends React.Component {
     render(){
         return (
             <div className="home-screen">
-                {this.state.postJSONs.map( (post) => <Post type="text" typeOfPost={post.type} title={post.title} text={post.text} imgSrc={post.url} myHref={post.url} key={post._id} postId={post._id} /> )}
+                {this.state.postJSONs.map( (post) => 
+                    <Post 
+                        type="text"
+                        typeOfPost={post.type}
+                        title={post.title}
+                        text={post.text}
+                        imgSrc={post.url}
+                        myHref={post.url}
+                        key={post._id}
+                        postId={post._id}
+                    /> )}
             </div>
         );
     }

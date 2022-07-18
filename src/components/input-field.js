@@ -21,18 +21,33 @@ export default class InputField extends React.Component {
     }
 
     submitPost() {
-        fetch(apiURL + '/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                type: (this.state.textPost ? "img" : "text"),
-                title: this.theTitle.current.value,
-                text: this.theText.current.value,
-                url: this.theURL.current.value
-            })
-        });
+        if(this.state.textPost) {
+            fetch(apiURL + '/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    type: (this.state.textPost ? "img" : "text"),
+                    title: this.theTitle.current.value,
+                    text: this.theText.current.value,
+                    url: this.theURL.current.value
+                })
+            });
+        } else {
+            fetch(apiURL + '/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    type: (this.state.textPost ? "img" : "text"),
+                    title: this.theTitle.current.value,
+                    text: this.theText.current.value,
+                })
+            });
+        }
+        
         this.setState({redirect: <Redirect to="/" />});
     }
 
