@@ -13,6 +13,8 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
+        let date = new Date()
+        console.log(date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes());
         this.getPosts();
     }
 
@@ -39,6 +41,7 @@ export default class Home extends React.Component {
                         text={post.text}
                         imgSrc={post.url}
                         myHref={post.url}
+                        date={post.date}
                         key={post._id}
                         postId={post._id}
                     /> )}

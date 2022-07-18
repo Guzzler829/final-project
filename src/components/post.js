@@ -26,9 +26,11 @@ export default function Post(props) {
                 <img src={props.imgSrc} onClick={toggleActive} ref={theImage} id="image-element" />
                 <div className="post-footer">
                 <p>{props.text}</p>
+                <p className='post-date'>{props.date}</p>
                     <ButtonGroup>
-                        <Button variant="secondary">Commments</Button>
+                        <Button variant="secondary">Comments</Button>
                         <Button variant="secondary">Share</Button>
+                        <Button variant="secondary">Edit</Button>
                         <Button variant="danger" onClick={deletePost}>Delete</Button>
                     </ButtonGroup>
                 </div>
@@ -43,8 +45,9 @@ export default function Post(props) {
             <p>{props.text}</p>
             <div className="post-footer">
                 <ButtonGroup>
-                    <Button variant="secondary">Commments</Button>
+                    <Button variant="secondary">Comments</Button>
                     <Button variant="secondary">Share</Button>
+                    <Button variant="secondary">Edit</Button>
                     <Button variant="danger" onClick={deletePost}>Delete</Button>
                 </ButtonGroup>
             </div>

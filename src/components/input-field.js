@@ -21,6 +21,8 @@ export default class InputField extends React.Component {
     }
 
     submitPost() {
+        let date = new Date();
+        let dateString = date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + " " + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
         if(this.state.textPost) {
             fetch(apiURL + '/posts', {
                 method: 'POST',
@@ -31,7 +33,8 @@ export default class InputField extends React.Component {
                     type: (this.state.textPost ? "img" : "text"),
                     title: this.theTitle.current.value,
                     text: this.theText.current.value,
-                    url: this.theURL.current.value
+                    url: this.theURL.current.value,
+                    date: dateString
                 })
             });
         } else {
@@ -44,6 +47,7 @@ export default class InputField extends React.Component {
                     type: (this.state.textPost ? "img" : "text"),
                     title: this.theTitle.current.value,
                     text: this.theText.current.value,
+                    date: dateString
                 })
             });
         }
