@@ -46,6 +46,7 @@ a:visited {
   transition: 300ms cubic-bezier(.39,.02,.78,.68);
   white-space: nowrap;
   text-overflow: clip;
+  z-index: 999;
 }
 
 .sidebar.is-active {
@@ -69,9 +70,33 @@ a:visited {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 16px;
+  padding-top: 0;
   margin: 4px;
   border-radius: 8px;
   border: 3px solid gray;
+}
+
+.input-buttons {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.input-button {
+  width: 50%;
+  border: none;
+  background-color: #222831;
+  color: #eee;
+  height: 48px;
+  padding: 16px;
+  margin-bottom: 6px;
+}
+
+.input-button.is-active {
+  border-bottom: 2px solid gray;
+  background-color: #393E46;
 }
 
 /* 
@@ -210,10 +235,10 @@ https://codepen.io/guzzler829/pen/BarzmOP
 
 .post {
   padding: 16px;
-  margin: 4px;
+  margin: 8px;
   border-radius: 8px;
   border: 3px solid gray;
-  width: 400px;
+  width: 80%;
   background-color: #393E46;
 }
 
@@ -222,8 +247,21 @@ https://codepen.io/guzzler829/pen/BarzmOP
   bottom: 0;
 }
 
+.post > img {
+  width: 10%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+.post > img.is-active {
+  width: 100%;
+}
+
 .home-screen {
+  width: 100%;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 10%;
 }
