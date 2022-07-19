@@ -54,7 +54,7 @@ export default function Post(props) {
         }
         if(typeOfPost == "edit-img") {
             fetch(apiURL + '/posts/' + props.postId, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
