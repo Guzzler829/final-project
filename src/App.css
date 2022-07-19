@@ -246,6 +246,10 @@ https://codepen.io/guzzler829/pen/BarzmOP
   color: #eee !important;
 }
 
+.post-date {
+  font-style: italic;
+}
+
 .post-footer {
   position: relative;
   bottom: 0;
