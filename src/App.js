@@ -15,6 +15,7 @@ import Sidebar from './components/sidebar';
 import NotFound from './components/404';
 import SavedPosts from './components/saved';
 import Settings from './components/settings';
+import Profile from './components/profile';
 
 const apiURL = 'https://crudcrud.com/api/91ba9e9f61e541de92c8e6d9b14465a5';
 
@@ -34,7 +35,7 @@ export default function App() {
         }
     })
         .then( res => res.json() )
-        .then( res => this.setState({postJSONs: res}) )
+        .then( res => setPostJSONs(res) )
         .catch( err => console.error(err) );
   }
 
@@ -57,9 +58,12 @@ export default function App() {
           <Route path="/settings" exact={true}>
             <Settings />
           </Route>
+          <Route path="/user" exact={true}>
+            <Profile />
+          </Route>
           
           {postJSONs.map( (post) => {
-            <Route path={"/posts/" + post.postId} exact={true}>
+            <Route path={"/posts/" + post.postId}>
               <Post 
                 typeOfPost={post.type}
                 title={post.title}
@@ -73,7 +77,7 @@ export default function App() {
             </Route>
           })}
 
-          {/* Jeff sent me a message with an explanation of how to route to the posts properly, but I didn't really understand it */}
+          {/* Jeff sent me a message with an explanation of how to route to the posts properly using useParams, but I didn't really understand it */}
           
           <Route>
             <NotFound />

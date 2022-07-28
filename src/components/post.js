@@ -19,9 +19,9 @@ export default function Post(props) {
     const [typeOfPost, setTypeOfPost] = useState("");
     const [alreadySaved, setAlreadySaved ] = useState(false);
 
-    const [titleText, setTitleText] = useState("");
-    const [textText, setText] = useState("");
-    const [urlText, setUrlText] = useState("");
+    // const [titleText, setTitleText] = useState("");
+    // const [textText, setText] = useState("");
+    // const [urlText, setUrlText] = useState("");
 
     useEffect( () => {
         setTypeOfPost(props.typeOfPost);

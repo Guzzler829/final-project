@@ -302,3 +302,63 @@ https://codepen.io/guzzler829/pen/BarzmOP
   left: 10%;
 }
 
+.profile {
+  display: block;
+  text-align: center;
+}
+
+.profile .row > img {
+  width: 100px !important;
+  height: 100px !important;
+  border: 4px solid gray;
+  border-radius: 50%;
+  padding: 0;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  appearance: none;
+  background-color: #aaa;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+.switch:checked {
+  background-color: #3474eb;
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 200ms ease;
+}
+
+.switch:checked::before {
+  transform: translateX(20px);
+}
+
+.setting {
+  display: flex;
+  margin: 8px;
+  font-size: 24px;
+}
+
+.switch-label {
+  margin-left: 1rem;
+} 
