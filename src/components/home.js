@@ -16,8 +16,8 @@ export default class Home extends React.Component {
         this.getPosts();
     }
 
-    getPosts() {
-        fetch(apiURL + '/posts', {
+    async getPosts() {
+        await fetch(apiURL + '/posts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +33,6 @@ export default class Home extends React.Component {
             <div className="home-screen">
                 {this.state.postJSONs.map( (post) => 
                     <Post 
-                        type="text"
                         typeOfPost={post.type}
                         title={post.title}
                         text={post.text}
@@ -42,7 +41,8 @@ export default class Home extends React.Component {
                         date={post.date}
                         key={post._id}
                         postId={post._id}
-                    /> )}
+                    /> 
+                )}
             </div>
         );
     }

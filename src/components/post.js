@@ -17,6 +17,7 @@ export default function Post(props) {
     const theUrl = useRef(null);
 
     const [typeOfPost, setTypeOfPost] = useState("");
+    const [alreadySaved, setAlreadySaved ] = useState(false);
 
     const [titleText, setTitleText] = useState("");
     const [textText, setText] = useState("");
@@ -36,7 +37,7 @@ export default function Post(props) {
 
     function submitEdit() {
         let date = new Date();
-        let dateString = date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + " " + date.getHours() + ":" + ((date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes());
+        let dateString = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + ((date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes());
         if(typeOfPost == "edit-txt") {
             fetch(apiURL + '/posts/' + props.postId, {
                 method: 'PUT',
@@ -71,6 +72,45 @@ export default function Post(props) {
         
     }
 
+    function savePost() {
+        let savedPostArray = [];
+        //get all the saved posts
+        fetch(apiURL + '/saved-posts', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then( res => res.json() )
+            .then( res => savedPostArray = res )
+            .catch( err => console.error(err) );
+        //go through and check if the post is already saved
+        for(let i = 0; i < savedPostArray.length; i++) {
+            if(props.postId == savedPostArray[i].savedPostId) {
+                setAlreadySaved(true);
+            }
+        }
+
+        //save the post if not already saved
+        if(!alreadySaved) {
+            fetch(apiURL + '/saved-posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    savedPostId: props.postId
+                })
+            })
+                .then( res => res.json() )
+                .then( res => console.log(res) )
+                .catch( err => console.error(err) )
+        } else {
+            console.log("This post is already saved.");
+        }
+        
+    }
+
     if(typeOfPost == 'edit-img') {
         return (
             <div className="post">
@@ -82,7 +122,7 @@ export default function Post(props) {
                 <p className='post-date'>{props.date}</p>
                     <ButtonGroup>
                         <Button variant="secondary">Comments</Button>
-                        <Button variant="secondary">Share</Button>
+                        <Button variant="secondary" onClick={savePost}>Save</Button>
                         <Button variant="primary" onClick={submitEdit}>Submit Edit</Button>
                         <Button variant="danger" onClick={deletePost}>Delete</Button>
                     </ButtonGroup>
@@ -100,7 +140,7 @@ export default function Post(props) {
                 <div className="post-footer">
                     <ButtonGroup>
                         <Button variant="secondary">Comments</Button>
-                        <Button variant="secondary">Share</Button>
+                        <Button variant="secondary" onClick={savePost}>Save</Button>
                         <Button variant="primary" onClick={submitEdit}>Submit Edit</Button>
                         <Button variant="danger" onClick={deletePost}>Delete</Button>
                     </ButtonGroup>
@@ -121,7 +161,7 @@ export default function Post(props) {
                 <p className='post-date'>{props.date}</p>
                     <ButtonGroup>
                         <Button variant="secondary">Comments</Button>
-                        <Button variant="secondary">Share</Button>
+                        <Button variant="secondary" onClick={savePost}>Save</Button>
                         <Button variant="secondary" onClick={() => setTypeOfPost('edit-img')}>Edit</Button>
                         <Button variant="danger" onClick={deletePost}>Delete</Button>
                     </ButtonGroup>
@@ -139,7 +179,7 @@ export default function Post(props) {
             <div className="post-footer">
                 <ButtonGroup>
                     <Button variant="secondary">Comments</Button>
-                    <Button variant="secondary">Share</Button>
+                    <Button variant="secondary" onClick={savePost}>Save</Button>
                     <Button variant="secondary" onClick={() => setTypeOfPost('edit-txt')}>Edit</Button>
                     <Button variant="danger" onClick={deletePost}>Delete</Button>
                 </ButtonGroup>

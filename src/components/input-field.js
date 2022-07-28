@@ -22,7 +22,7 @@ export default class InputField extends React.Component {
 
     submitPost() {
         let date = new Date();
-        let dateString = date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + " " + date.getHours() + ":" + ((date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes());
+        let dateString = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + " " + date.getHours() + ":" + ((date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes());
         if(this.state.textPost) {
             fetch(apiURL + '/posts', {
                 method: 'POST',

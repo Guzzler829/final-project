@@ -23,9 +23,74 @@ a:visited {
 }
 
 
+/* For the 404 page */
+
 .four-zero-four {
   margin: 16px;
+  text-align: center;
 }
+
+.four-zero-four > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.magnifier-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.magnifier {
+  width: 200px;
+  height: 200px;
+  border: 10px solid #aaa;
+  border-radius: 50%;
+  animation: search 3s infinite ease-in-out forwards;
+}
+
+.magnifier::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 160px;
+  top: 160px;
+  left: 180px;
+  background-color: #aaa;
+  transform-origin: left center;
+  transform: rotate(-35deg);
+}
+
+.magnifier::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 10px;
+  left: 10px;
+  border: 8px solid white;
+  border-radius: 50%;
+  border-color: transparent transparent transparent white;
+}
+
+@keyframes search {
+  0% {
+    transform: translate(-100px, 100px)
+  }
+  33% {
+    transform: translate(100px, 100px)
+  }
+  67% {
+    transform: translate(0, -100px)
+  }
+  100% {
+    transform: translate(-100px, 100px)
+  }
+}
+
 
 .sidebar-link {
   color: #eee !important;
@@ -196,43 +261,6 @@ https://codepen.io/guzzler829/pen/BarzmOP
   opacity: 0;
 }
 
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  border: 4px solid #3b77d9;
-  border-style: solid solid none none;
-  border-radius: 50%;
-  animation: spinner 1000ms infinite ease-in-out alternate;
-}
-
-.spinner-2 {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 160px;
-  height: 160px;
-  border: 4px solid #00ADB5;
-  border-style: solid solid none none;
-  border-radius: 50%;
-  animation: spinner 900ms infinite ease-in-out alternate;
-}
-
-@keyframes spinner {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
 .post {
   padding: 16px;
   margin: 8px;
@@ -273,3 +301,4 @@ https://codepen.io/guzzler829/pen/BarzmOP
   position: absolute;
   left: 10%;
 }
+
