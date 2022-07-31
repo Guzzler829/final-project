@@ -19,6 +19,8 @@ export default function Post(props) {
     const [typeOfPost, setTypeOfPost] = useState("");
     const [alreadySaved, setAlreadySaved ] = useState(false);
 
+    const [commentArray, setCommentArray] = useState([]); // I didn't get to this part
+
     // const [titleText, setTitleText] = useState("");
     // const [textText, setText] = useState("");
     // const [urlText, setUrlText] = useState("");

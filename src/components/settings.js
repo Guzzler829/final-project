@@ -6,10 +6,11 @@ export default function Settings(props) {
 
     useEffect( () => {
         checkBox.current.checked = getCookie('classicToggle');
+        console.log(getCookie('classicToggle'));
     }, []);
 
     //this getCookie function is taken from this w3Schools page: https://www.w3schools.com/js/js_cookies.asp
-
+    //I could have made my own version of it, but why do that when someone else already has?
     function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);

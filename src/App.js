@@ -87,15 +87,3 @@ export default function App() {
     </Suspense>
   );
 }
-
-
-/*
-
-TODO:
--Make post component
--Make comment component
--Interface with API
-
-
-
-*/
